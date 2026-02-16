@@ -1,0 +1,3 @@
+Hello Worldls -la exercices
+cat exercices/helloworld.txt
+
