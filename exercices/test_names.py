@@ -1,6 +1,6 @@
 import unittest
 
-def names(prenoms):
+def count_names(prenoms):
     more_than_seven = 0
     for prenom in prenoms:
         if len(prenom) > 7:
@@ -11,7 +11,7 @@ def names(prenoms):
 class TestNamesMethod(unittest.TestCase):
     def test_names(self):
         prenoms = ["Guillaume", "Gilles", "Juliette", "Antoine", "François", "Cassandre"]
-        result = names(prenoms)
+        result = count_names(prenoms)
         self.assertEqual(result, 4)
 
 
