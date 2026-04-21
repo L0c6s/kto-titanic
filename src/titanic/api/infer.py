@@ -53,6 +53,14 @@ def health() -> dict:
 
 
 # TODO : Ajouter les paramètres de la fonction (peut se faire en deux fois avec la sécurisation via oAuth2)
-def infer() -> list:
-    # TODO : implémenter le corps de la fonction
-    return [0]
+@app.post("/infer")
+def infer(passenger: Passenger, token: str = Depends(verify_token("api:read"))) -> list:
+
+    df_passenger = pd.DataFrame([passenger.to_dict()])
+    df_passenger["Sex"] = pd.Categorical(df_passenger["Sex"], categories=[Sex.FEMALE.value, Sex.MALE.value])
+    df_to_predict = pd.get_dummies(df_passenger)
+
+    res = model.predict(df_to_predict)
+
+    return res.tolist()
+
