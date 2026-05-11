@@ -167,7 +167,8 @@ cython_debug/
 # ruff
 .ruff_cache
 
-scripts/
-
+scripts/*
 !scripts/install-mlflow.sh
+!scripts/test_local_mlflow.sh
+!scripts/test_kto_mlflow.sh
 !scripts/uninstall-mlflow.sh
